@@ -17,7 +17,13 @@ app.use(express.urlencoded({
   extended: true
 }));
 
-app.use(cors({ origin: ["http://localhost:5173", "https://mr-thanh.onrender.com/"] }));
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://mr-thanh.vercel.app"
+  ],
+  credentials: true
+}));
 
 
 route(app);
