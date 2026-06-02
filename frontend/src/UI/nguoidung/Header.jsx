@@ -6,7 +6,9 @@ const Header = ({ cartCount }) => {
   const [carts, setCarts] = useState([]);
   const [showQR, setShowQR] = useState(false);
   const [paymentData, setPaymentData] = useState(null);
+  const qrCode = paymentData?.qrCode || "";
   const amount = paymentData?.amount ?? 0;
+  const orderCode = paymentData?.orderCode || "";
   //gọi API giỏ hàng
   useEffect(() => {
     getCart();
@@ -234,7 +236,7 @@ const Header = ({ cartCount }) => {
               <div className="payment-left">
 
                 <QRCodeCanvas
-                className="qr-code"
+                  className="qr-code"
                   value={paymentData.qrCode}
                   size={260}
                 />
@@ -270,7 +272,7 @@ const Header = ({ cartCount }) => {
                   <span>Số tiền:</span>
 
                   <strong>
-                   {amount.toLocaleString("vi-VN")} VNĐ
+                    {amount.toLocaleString("vi-VN")} VNĐ
                   </strong>
                 </div>
 
