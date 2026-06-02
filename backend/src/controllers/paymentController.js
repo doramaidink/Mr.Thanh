@@ -3,6 +3,7 @@ const { createPayment } = require("../services/payosService");
 
 class PaymentController {
     async createQR(req, res) {
+        const paymentData = req.body;
         const result = await createPayment(paymentData);
 
         console.log(
