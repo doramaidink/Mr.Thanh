@@ -466,20 +466,19 @@ body,
 /* layout chính */
 .payment-content {
     display: flex;
-    flex-direction: column; /* 👈 mobile xếp dọc */
     gap: 20px;
     align-items: center;
 }
 
 /* QR bên trái */
 .payment-left {
-    width: 100%;
+    width: 50%;
     display: flex;
     justify-content: center;
 }
 
 .qr-code {
-    width: 220px !important;  /* 👈 giảm QR */
+    width: 200px !important;  /* 👈 giảm QR */
     height: auto;
 }
 
@@ -519,32 +518,4 @@ body,
     border-radius: 8px;
     font-size: 13px;
     text-align: center;
-}
-
-/* ===== TABLET + DESKTOP ===== */
-@media (min-width: 768px) {
-
-    .payment-box {
-        max-width: 800px;
-        padding: 25px;
-    }
-
-    .payment-content {
-        flex-direction: row; /* desktop lại ngang */
-        align-items: flex-start;
-        gap: 40px;
-    }
-
-    .qr-code {
-        width: 260px !important;
-    }
-
-    .payment-right h3 {
-        text-align: left;
-        font-size: 20px;
-    }
-
-    .info-row {
-        text-align: left;
-    }
 }

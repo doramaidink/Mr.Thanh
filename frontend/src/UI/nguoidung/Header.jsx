@@ -246,9 +246,6 @@ const Header = ({ cartCount }) => {
               {/* Bên phải */}
 
               <div className="payment-right">
-
-                <h3>Thông tin chuyển khoản</h3>
-
                 <div className="info-row">
                   <span>Ngân hàng:</span>
                   <strong>MB BANK</strong>
