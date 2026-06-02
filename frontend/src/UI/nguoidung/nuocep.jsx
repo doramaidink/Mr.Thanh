@@ -8,7 +8,7 @@ const NuocEp = ({ data, refreshCart }) => {
   const addToCart = async (drinkId) => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/cart/add",
+        "https://mr-thanh.onrender.com/cart/add",
         { drinkId }
       );
 

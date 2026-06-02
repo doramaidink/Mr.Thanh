@@ -16,7 +16,7 @@ const CaphePage = () => {
   }, []);
   const addDrinkInfo = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/");
+      const res = await axios.get("https://mr-thanh.onrender.com/");
       setData(res.data);
       console.log(res.data);
     }
@@ -26,7 +26,7 @@ const CaphePage = () => {
   }
   //thêm giỏ hàng 
   const getCart = async () => {
-    const res = await axios.get("http://localhost:5000/cart");
+    const res = await axios.get("https://mr-thanh.onrender.com/cart");
 
     const total = res.data.reduce(
       (sum, item) => sum + item.quantity,

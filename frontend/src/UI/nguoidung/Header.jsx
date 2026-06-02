@@ -14,7 +14,7 @@ const Header = ({ cartCount }) => {
   const getCart = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/cart"
+        "https://mr-thanh.onrender.com/cart"
       );
 
       setCarts(res.data);
@@ -26,7 +26,7 @@ const Header = ({ cartCount }) => {
   const deleteCart = async (id) => {
     try {
       await axios.delete(
-        `http://localhost:5000/cart/${id}`
+        `https://mr-thanh.onrender.com/cart/${id}`
       );
 
       getCart();
@@ -38,7 +38,7 @@ const Header = ({ cartCount }) => {
   const increaseQuantity = async (id) => {
     try {
       await axios.patch(
-        `http://localhost:5000/cart/increase/${id}`
+        `https://mr-thanh.onrender.com/cart/increase/${id}`
       );
 
       getCart();
@@ -50,7 +50,7 @@ const Header = ({ cartCount }) => {
   const decreaseQuantity = async (id) => {
     try {
       await axios.patch(
-        `http://localhost:5000/cart/decrease/${id}`
+        `https://mr-thanh.onrender.com/cart/decrease/${id}`
       );
 
       getCart();
@@ -76,7 +76,7 @@ const Header = ({ cartCount }) => {
       console.log("CLICK THANH TOAN");
 
       const res = await axios.post(
-        "http://localhost:5000/pay/thanhtoanqr"
+        "https://mr-thanh.onrender.com/pay/thanhtoanqr"
       );
 
       console.log("PAYMENT RESPONSE:", res.data);
