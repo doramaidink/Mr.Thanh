@@ -6,6 +6,7 @@ const Header = ({ cartCount }) => {
   const [carts, setCarts] = useState([]);
   const [showQR, setShowQR] = useState(false);
   const [paymentData, setPaymentData] = useState(null);
+  const amount = paymentData?.amount ?? 0;
   //gọi API giỏ hàng
   useEffect(() => {
     getCart();
