@@ -1,6 +1,7 @@
 import { Toaster, toast } from 'sonner';
 import { BrowserRouter, Route, Routes } from 'react-router';
 import { ToastContainer } from "react-toastify";
+import 'atropos/css';
 import "react-toastify/dist/ReactToastify.css";
 import HomePage from './pages/nguoidung/HomePage';
 import NotFound from './pages/NotFound';
