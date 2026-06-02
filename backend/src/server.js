@@ -22,6 +22,7 @@ app.use(cors({
     "http://localhost:5173",
     "https://mr-thanh.vercel.app"
   ],
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   credentials: true
 }));
 
