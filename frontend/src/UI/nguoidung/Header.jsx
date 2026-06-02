@@ -261,7 +261,7 @@ const Header = ({ cartCount }) => {
                 <div className="info-row">
                   <span>Số tài khoản:</span>
                   <strong>
-                    VQROJALBQ5104
+                   0934920019
                   </strong>
                 </div>
 
