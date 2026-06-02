@@ -270,10 +270,7 @@ const Header = ({ cartCount }) => {
                   <span>Số tiền:</span>
 
                   <strong>
-                    {paymentData.amount.toLocaleString(
-                      "vi-VN"
-                    )}{" "}
-                    VNĐ
+                   {amount.toLocaleString("vi-VN")} VNĐ
                   </strong>
                 </div>
 
