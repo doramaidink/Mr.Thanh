@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import { QRCodeCanvas } from "qrcode.react";
 const Header = ({ cartCount }) => {
   const [openCart, setOpenCart] = useState(false);
   const [carts, setCarts] = useState([]);
+  const [showQR, setShowQR] = useState(false);
+  const [paymentData, setPaymentData] = useState(null);
   //gọi API giỏ hàng
   useEffect(() => {
     getCart();
@@ -68,6 +70,24 @@ const Header = ({ cartCount }) => {
       item.quantity,
     0
   );
+  //API tạo QR code thanh toán
+  const handleCheckout = async () => {
+    try {
+      console.log("CLICK THANH TOAN");
+
+      const res = await axios.post(
+        "http://localhost:5000/pay/thanhtoanqr"
+      );
+
+      console.log("PAYMENT RESPONSE:", res.data);
+
+      setPaymentData(res.data);
+      setShowQR(true);
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       <div className="HeaderHome">
@@ -186,14 +206,95 @@ const Header = ({ cartCount }) => {
                 Tổng tiền:
                 {totalPrice.toLocaleString("vi-VN")} VNĐ
               </h3>
-              <button className="checkout-btn">
+              <button className="checkout-btn"
+                onClick={handleCheckout}>
                 Thanh toán
               </button>
             </div>
           </div>
-
         </div>
 
+      )}
+      {showQR && paymentData && (
+        <div className="payment-modal">
+          <div className="payment-box">
+
+            <button
+              className="close-btn"
+              onClick={() => setShowQR(false)}
+            >
+              ✕
+            </button>
+
+            <div className="payment-content">
+
+              {/* Bên trái */}
+
+              <div className="payment-left">
+
+                <QRCodeCanvas
+                className="qr-code"
+                  value={paymentData.qrCode}
+                  size={260}
+                />
+
+              </div>
+
+              {/* Bên phải */}
+
+              <div className="payment-right">
+
+                <h3>Thông tin chuyển khoản</h3>
+
+                <div className="info-row">
+                  <span>Ngân hàng:</span>
+                  <strong>MB BANK</strong>
+                </div>
+
+                <div className="info-row">
+                  <span>Chủ tài khoản:</span>
+                  <strong>
+                    MAI LE TUAN KIET
+                  </strong>
+                </div>
+
+                <div className="info-row">
+                  <span>Số tài khoản:</span>
+                  <strong>
+                    VQROJALBQ5104
+                  </strong>
+                </div>
+
+                <div className="info-row">
+                  <span>Số tiền:</span>
+
+                  <strong>
+                    {paymentData.amount.toLocaleString(
+                      "vi-VN"
+                    )}{" "}
+                    VNĐ
+                  </strong>
+                </div>
+
+                <div className="info-row">
+                  <span>Nội dung:</span>
+
+                  <strong>
+                    DH{paymentData.orderCode}
+                  </strong>
+                </div>
+
+                <div className="payment-note">
+                  Vui lòng chuyển khoản đúng số
+                  tiền và nội dung để hệ thống
+                  tự động xác nhận.
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
       )}
     </>
   );
